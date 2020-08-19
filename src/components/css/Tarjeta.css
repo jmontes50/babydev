@@ -1,0 +1,35 @@
+.card{
+  border-style:none !important;
+  border-radius:20px;
+  font-family: 'Mulish';
+}
+
+.card-body{
+  background-color:#F4F4F4;
+  border-radius:0 0 15px 15px;
+}
+
+.card-img-top{
+  border-radius:15px 15px 0 0;
+}
+
+.precio{
+  color:#EBA86D;
+  font-size:18px;
+}
+
+.cardcantidad{
+  background-color: #EF7B84;
+  color:white;
+  font-weight:bold;
+  font-size:14px;
+  position: relative;
+  width:120px;
+  top:-21px;
+
+}
+
+.cantidad{
+  color:#64DDF6;
+  font-size:18px;
+}

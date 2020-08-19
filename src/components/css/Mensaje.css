@@ -1,0 +1,20 @@
+.foto{
+  height:80px;
+  width:80px;
+  border-radius: 50%;
+  border:4px solid #00B8AB;
+  position: absolute;
+  top:-40px;
+  left:calc(50% - 40px);
+}
+
+.mensaje{
+  border-radius:20px;
+  border:1px solid lightgray;
+  padding:50px 25px 25px 25px;
+  font-family: 'Mulish';
+}
+
+.mensajitos{
+  padding-top: 40px;
+}
