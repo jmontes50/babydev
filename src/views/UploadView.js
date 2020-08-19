@@ -187,7 +187,7 @@ export default function UploadView() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="donde">Donde encontrarlo</label>
+                <label htmlFor="donde">Donde encontrarlo?</label>
                 <div className="row">
                   <div className="col-12 col-md-9">
                     <input
@@ -200,7 +200,7 @@ export default function UploadView() {
                       }}
                     />
                     <small className="form-text text-muted">
-                      Agrega links o sitios donde puedan encontrar el regalo
+                      Agrega links o sitios para ayudar a que encuentrennpm state_changed el regalo
                       deseado
                     </small>
                   </div>

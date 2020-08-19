@@ -33,3 +33,9 @@
   color:#64DDF6;
   font-size:18px;
 }
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}

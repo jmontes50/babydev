@@ -3,7 +3,7 @@ import "./css/Mensaje.css";
 
 export default function Mensaje() {
   return (
-    <div className="col-12 col-sm-6 col-md-4 mb-5">
+    <div className="col-12 col-md-6 col-lg-4 mb-5">
       <div className="mensaje">
         <div>
           <img className="foto" src="http://lorempixel.com/200/200/people" />

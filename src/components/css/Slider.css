@@ -1,0 +1,30 @@
+.carousel-caption {
+  right: 15%;
+  top: 45%;
+  left: 55%;
+  text-shadow:1px 1px 5px lightgray;
+}
+
+.carousel-caption > h3{
+  color:#82E3F8;
+  font-size:30px;
+}
+
+.carousel-caption > p{
+  color: #947B80;
+}
+
+@media screen and (max-width:480px){
+  .carousel-caption {
+    right: 15%;
+    top: 30%;
+    left: 55%;
+  }
+  .carousel-caption > h3{
+    font-size:16px;
+  }
+
+  .carousel-caption > p{
+    font-size:12px;
+  }
+}
