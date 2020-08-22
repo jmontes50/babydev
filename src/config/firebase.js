@@ -12,7 +12,9 @@ const config = {
 
 const fire = firebase.initializeApp(config);
 const storage = firebase.storage();
+
 export {
   storage,
-  fire as default
+  fire as default,
+  firebase
 }

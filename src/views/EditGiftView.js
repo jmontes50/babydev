@@ -1,24 +1,40 @@
 import React, { useState, useEffect, Fragment, useContext } from "react";
 import fire, { storage } from "../config/firebase";
-import { useHistory } from "react-router-dom";
-import { AuthContext } from "../Context/authContext";
-import validateAdmin from "../utils/validateAdmin";
+import {useHistory} from "react-router-dom";
+import { getRegalo } from "../services/giftsService";
+import {AuthContext} from "../Context/authContext";
+import validateAdmin from "../utils/validateAdmin"
 import Swal from "sweetalert2";
 import Loading from "../components/Loading";
 
 let imagenRegalo;
 
-export default function UploadView() {
+export default function EditGiftView(props) {
+  let id = props.match.params.id;
   const history = useHistory();
-  const { user } = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const [access, setAccess] = useState(false);
-
   const [regalo, setRegalo] = useState({
     nombre: "",
     precio: 0,
     descripcion: "",
     cantidad: 0,
   });
+
+  const getGift = () => {
+    setLoading(true);
+    getRegalo(props.match.params.id).then((data) => {
+      setRegalo({
+        nombre: data.nombre,
+        precio: data.precio,
+        descripcion: data.descripcion,
+        cantidad: data.cantidad,
+        imagen:data.imagen
+      });
+      setSitios([...data.sitios]);
+      setLoading(false);
+    });
+  };
 
   const [loading, setLoading] = useState(false);
 
@@ -51,11 +67,12 @@ export default function UploadView() {
 
   useEffect(() => {
     let esAdmin = validateAdmin(user);
-    if (user !== null && esAdmin === true) {
+    if(user !== null && esAdmin === true){
       setAccess(true);
-    } else {
-      return history.push("/");
+    }else{
+      return history.push('/');
     }
+    getGift();
   }, []);
 
   useEffect(() => {
@@ -93,40 +110,50 @@ export default function UploadView() {
     });
   };
 
-  const crearRegalo = () => {
+  const updateFirestore = (rutaImg = regalo.imagen) => {
+    let db = fire.firestore();
+    db.collection("regalos")
+      .doc(id)
+      .update({
+        nombre: regalo.nombre,
+        descripcion: regalo.descripcion,
+        precio: regalo.precio,
+        cantidad: regalo.cantidad,
+        imagen: rutaImg,
+        sitios: [...sitios],
+      })
+      .then(() => {
+        setLoading(false);
+        limpiar();
+        Swal.fire({
+          icon: "success",
+          title: "Regalo editado!",
+          showConfirmButton: false,
+          timer: 2000,
+        }).then(()=>{
+          history.push('/editar')
+        });
+      });
+  }
+
+  const updateRegalo = () => {
     if (
       regalo.nombre.trim() === "" ||
       regalo.descripcion.trim() === "" ||
       regalo.precio === 0 ||
-      regalo.cantidad === 0 ||
-      imagenRegalo === undefined
+      regalo.cantidad === 0
     ) {
       return;
     }
     setLoading(true);
-    const refStorage = storage.ref(`regalos/${imagenRegalo.name}`);
-    upload(imagenRegalo, refStorage).then((rutaImg) => {
-      let db = fire.firestore();
-      db.collection("regalos")
-        .add({
-          nombre: regalo.nombre,
-          descripcion: regalo.descripcion,
-          precio: regalo.precio,
-          cantidad: regalo.cantidad,
-          imagen: rutaImg,
-          sitios: [...sitios],
-        })
-        .then(() => {
-          setLoading(false);
-          limpiar();
-          Swal.fire({
-            icon: "success",
-            title: "Exito!",
-            showConfirmButton: false,
-            timer: 2000,
-          });
-        });
-    });
+    if (imagenRegalo !== undefined) {
+      const refStorage = storage.ref(`regalos/${imagenRegalo.name}`);
+      upload(imagenRegalo, refStorage).then((rutaImg) => {
+       updateFirestore(rutaImg);
+      });
+    }else{
+      updateFirestore();
+    }
   };
 
   return (
@@ -137,7 +164,7 @@ export default function UploadView() {
         ) : (
           <div className="container">
             <div className="seccion">
-              <h1>Subir Regalos</h1>
+              <h1>Actualizar Regalos</h1>
               <form>
                 <div className="form-group">
                   <label htmlFor="nombre">Nombre del regalo *</label>
@@ -177,7 +204,7 @@ export default function UploadView() {
                     />
                   </div>
                 </div>
-
+  
                 <div className="form-group">
                   <label htmlFor="descripcion">Descripción *</label>
                   <textarea
@@ -202,6 +229,7 @@ export default function UploadView() {
                       manejarImagen(e);
                     }}
                   />
+                   <small>Solo si agregas una imagen nueva se cambiará la imagen, si no se mantendrá la anterior</small>
                 </div>
                 <div className="form-group">
                   <label htmlFor="donde">Donde encontrarlo?</label>
@@ -265,10 +293,10 @@ export default function UploadView() {
                   type="submit"
                   className="btn btn-shower btn-block btn-lg"
                   onClick={() => {
-                    crearRegalo();
+                    updateRegalo();
                   }}
                 >
-                  Publicar Regalo
+                  Actualizar Regalo
                 </button>
               </form>
             </div>

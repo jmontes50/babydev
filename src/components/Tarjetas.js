@@ -5,9 +5,13 @@ export default function () {
 
   const [regalos, setRegalos] = useState([]);
 
-  let obtenerRegalos = async () => {
-    let regalos = await getRegalos();
-    reducirRegalos(regalos);
+  let obtenerRegalos = () => {
+    getRegalos().then(regalos => {
+      reducirRegalos(regalos);
+    }).catch(err => {
+        console.log(err)
+    })
+    
   }
 
   let reducirRegalos = (regalos) => {
@@ -25,7 +29,7 @@ export default function () {
         <h2>Regalos Disponibles</h2>
         <div className="row mt-4">
         {regalos.length > 0
-            ? (regalos.map((gift, i) => <Tarjeta gift={gift} key={i} />))
+            ? (regalos.slice(0,3).map((gift, i) => <Tarjeta gift={gift} key={i} />))
             : null}
         </div>
       </div>
