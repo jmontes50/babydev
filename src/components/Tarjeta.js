@@ -7,6 +7,7 @@ import { AuthContext } from "../Context/authContext";
 import Swal from "sweetalert2";
 import Loading from "../components/Loading";
 export default function Tarjeta({ gift }) {
+  console.log(gift)
   const { user } = useContext(AuthContext);
   const history = useHistory();
   const [loading, setLoading] = useState(false);

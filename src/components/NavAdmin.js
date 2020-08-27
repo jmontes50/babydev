@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import fire from "../config/firebase";
 import { AuthContext } from "../Context/authContext";
 import Swal from "sweetalert2";
-export default function NavAdmin() {
+export default function NavAdmin(props) {
   const { removeUser } = useContext(AuthContext);
   const salir = () => {
     fire
@@ -12,6 +12,7 @@ export default function NavAdmin() {
       .then(() => {
         removeUser();
         console.log("bye");
+        props.cambiarAcceso("public");
         Swal.fire({
           icon: "info",
           title: "Se ha deslogueado",

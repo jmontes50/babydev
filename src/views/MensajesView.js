@@ -24,6 +24,7 @@ export default function MensajesView() {
       <div className="seccion">
         <h2>Mensajitos</h2>
         <h4>Los mensajes escritos para ...</h4>
+        <small className="text-secondary">Después de registrarte puedes dejarle un mensaje en tu Perfil ...</small>
         <div className="row mt-4  mensajitos">
           {usuarios
             ? usuarios.map((usu, i) => (

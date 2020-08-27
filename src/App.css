@@ -1,33 +1,47 @@
-h1,h2, swal2-title{
-  font-family: 'Fredoka One';
-  color:#EF7B84 !important; 
+h1,
+h2,
+swal2-title {
+  font-family: "Fredoka One";
+  color: #ef7b84 !important;
 }
 
-.seccion{
-  margin:20px;
-  background-color:#FBFBFB;
-  border-radius:30px;
+.seccion {
+  margin: 20px;
+  background-color: #fbfbfb;
+  border-radius: 30px;
   padding: 30px;
 }
 
-.btn-shower{
-  color:white;
-  background-color:#EF7B84;
-  border:1px solid salmon;
+.btn-shower {
+  color: white;
+  background-color: #ef7b84;
+  border: 1px solid salmon;
 }
 
-.btn-shower:hover{
-  color:white;
-  background-color:#cf636c;
+.btn-shower:hover {
+  color: white;
+  background-color: #cf636c;
 }
 
-.leaflet{
-  height:500px;
-  width:100%;
+.leaflet {
+  height: 500px;
+  width: 100%;
 }
 
-@media screen and (max-width:770px){
-  .login{
-    margin-top:10px;
+.icono {
+  -webkit-text-fill-color: yellow;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+@media screen and (max-width: 770px) {
+  .login {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .cabecera {
+    font-size: 30px;
   }
 }

@@ -4,7 +4,8 @@ import { AuthContext } from "../Context/authContext";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-export default function NavPrivate() {
+export default function NavPrivate(props) {
+  console.log(props)
   const { removeUser } = useContext(AuthContext);
 
   const salir = () => {
@@ -13,6 +14,7 @@ export default function NavPrivate() {
       .signOut()
       .then(() => {
         removeUser();
+        props.cambiarAcceso("public");
         console.log("bye");
         Swal.fire({
           icon: "info",
@@ -30,6 +32,7 @@ export default function NavPrivate() {
     <Fragment>
       <li className="nav-item">
         <Link className="nav-link active" to="/perfil">
+        <i className="fas fa-star mr-2 fa-spin icono"></i>
           Perfil
         </Link>
       </li>

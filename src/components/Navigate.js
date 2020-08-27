@@ -31,8 +31,8 @@ export default function Navigate() {
   return (
     <div>
       <div className="container">
-        <div className="title d-flex justify-content-center align-items-center">
-          <h1>
+        <div className="title d-flex justify-content-center align-items-center text-center">
+          <h1 className="cabecera">
             <span>B</span>
             <span>A</span>
             <span>B</span>
