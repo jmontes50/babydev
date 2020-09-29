@@ -6,7 +6,7 @@ import header1 from "../assets/header1.jpg";
 import header2 from "../assets/header2.jpg";
 import header3 from "../assets/header3.jpg";
 import header4 from "../assets/header4.jpg";
-import header5 from "../assets/header5.jpg";
+import header5 from "../assets/header5.png";
 import "./css/Slider.css";
 
 export default function Slider() {

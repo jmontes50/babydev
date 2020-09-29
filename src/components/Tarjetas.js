@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import getRegalos from "../services/giftsService";
 import Tarjeta from "./Tarjeta";
+import {Link} from "react-router-dom";
+
 export default function () {
 
   const [regalos, setRegalos] = useState([]);
@@ -26,12 +28,13 @@ export default function () {
   return (
     <div className="seccion">
       <div>
-        <h2>Regalos Disponibles</h2>
-        <div className="row mt-4">
+        <Link to="/regalos"><h2>Regalos Disponibles</h2></Link>
+        
+        {/* <div className="row mt-4">
         {regalos.length > 0
             ? (regalos.slice(0,3).map((gift, i) => <Tarjeta gift={gift} key={i} />))
             : null}
-        </div>
+        </div> */}
       </div>
     </div>
   );
