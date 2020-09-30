@@ -23,7 +23,7 @@ export default function InfoView() {
                 <p className="card-text">Fabiola Llerena - 949724747</p>
                 <p className="card-text">Daniela Mancilla 982746755</p>
                 <h6 className="card-subtitle mb-2 text-muted">Cuenta de Ahorro BCP:</h6>
-                <p className="card-text">215-345588660-0-34</p>
+                <p className="card-text">215-34558860-0-34</p>
                 <h6 className="card-subtitle mb-2 text-muted">Dirección:</h6>
                 <p className="card-text">Urb. Los Ángeles de Cayma C-16 - Cayma</p>
               </div>
